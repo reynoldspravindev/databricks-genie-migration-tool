@@ -1,0 +1,19 @@
+{
+  "source_workspace_url": "https://your-source-workspace.cloud.databricks.com",
+  "source_genie_space_id": "01ef1234567890abcdef1234567890ab",
+  "target_workspace_url": "https://your-target-workspace.azuredatabricks.net",
+  "target_sql_warehouse_id": "abc123def456",
+  "source_auth_type": "PAT",
+  "target_auth_type": "PAT",
+  "source_pat": "your-source-pat-token-here",
+  "target_pat": "your-target-pat-token-here",
+  "source_sp_client_id": "",
+  "source_sp_client_secret": "",
+  "target_sp_client_id": "",
+  "target_sp_client_secret": "",
+  "target_space_display_name": "",
+  "target_space_description": "",
+  "action": "CREATE",
+  "existing_target_space_id": ""
+}
+

@@ -1,0 +1,12 @@
+# Python dependencies for Genie Space Migration Tool
+
+# HTTP requests library for API calls
+requests>=2.28.0
+
+# Optional: For better JSON handling in notebooks
+ipython>=8.0.0
+
+# Optional: For Jupyter notebook support
+jupyter>=1.0.0
+notebook>=6.5.0
+
