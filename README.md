@@ -4,7 +4,7 @@ This repository contains tools to migrate Databricks Genie spaces between worksp
 
 ## Overview
 
-The tools export a complete Genie space configuration (including code, settings, instructions, joins, table identifiers, and sample questions) from a source workspace and deploy it to a target workspace. This uses the Genie CRUD APIs linked below and works as a REST API wrapper for Powershell, Shell/BASH and a IPYNB Notebook.
+The tools export a complete Genie space configuration (including code, settings, instructions, joins, table identifiers, and sample questions) from a source workspace and deploy it to a target workspace. As DAB's support for Genie space is currently unavailable, this uses the Genie CRUD APIs linked below and works as a REST API wrapper for Powershell, Shell/BASH and a IPYNB Notebook.
 
 ## Features
 
