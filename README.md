@@ -4,7 +4,7 @@ This repository contains tools to migrate Databricks Genie spaces between worksp
 
 ## Overview
 
-The tools export a complete Genie space configuration (including code, settings, instructions, joins, table identifiers, and sample questions) from a source workspace and deploy it to a target workspace. As DAB's support for Genie space is currently unavailable, this uses the Genie CRUD APIs linked below and works as a REST API wrapper for Powershell, Shell/BASH and a IPYNB Notebook.
+The tools export a complete Genie space configuration (including code, settings, instructions, joins, table identifiers, and sample questions) from a source workspace and deploy it to a target workspace. As Databricks Asset Bundles (DABs) support for Genie is unavailable currently, this tool uses the Genie CRUD APIs linked below and works as a REST API wrapper for Powershell, Shell/BASH and a IPYNB Notebook.
 
 ## Features
 
@@ -16,6 +16,7 @@ The tools export a complete Genie space configuration (including code, settings,
   - SQL warehouse configuration
   - Table identifiers and managed tables
   - Data source configuration
+  - Benchmarks 
 - **Multiple Implementations**: Three different implementations for different use cases
 
 ## Tools
@@ -208,9 +209,9 @@ TARGET_DESCRIPTION_OVERRIDE = None  # Set to override, or None to keep original
 
 ## Migration Workflow
 
-1. **Fetch Source**: Retrieves the complete Genie space configuration from the source workspace using the Genie API with `include_serialized_space=true` parameter
+1. **Fetch Source**: Retrieves the complete Genie space configuration from the source workspace using the Genie API with `include_serialized_space=true` parameter. This includes all space components: instructions, sample questions, table identifiers, data source configuration, benchmarks, and quality metrics.
 2. **Prepare Configuration**: Extracts title, description, and warehouse ID, applying any overrides specified in the configuration
-3. **Deploy**: Creates a new Genie space in the target workspace (or updates an existing one) with the serialized configuration
+3. **Deploy**: Creates a new Genie space in the target workspace (or updates an existing one) with the serialized configuration. **Note**: The complete source configuration is applied to the target, overwriting any existing configuration if updating an existing space.
 
 ## Actions
 
@@ -225,6 +226,8 @@ ACTION = "CREATE"
 ### Update Existing Space
 
 Updates an existing Genie space in the target workspace.
+
+**⚠️ Important**: When updating an existing space, the entire configuration will be **overwritten** with the source configuration. This includes all instructions, sample questions, table identifiers, benchmarks, and other settings. The target space's current configuration will be completely replaced.
 
 ```python
 ACTION = "UPDATE"
@@ -290,8 +293,7 @@ brew install jq
 
 ## Security Best Practices
 
-1. **Never commit credentials** to version control
-2. **Use environment variables** or secure vaults for credentials in production
+1. **Use environment variables** or secure vaults for credentials in production
 3. **Use Service Principals** instead of PATs for production automation
 4. **Rotate credentials** regularly
 5. **Grant minimum required permissions** to service principals
